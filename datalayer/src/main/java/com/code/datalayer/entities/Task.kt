@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.code.datalayer.component.DateK
 import com.code.datalayer.constant.*
+import java.time.LocalDate
 
 import java.util.*
 import kotlin.time.Duration
@@ -18,10 +19,11 @@ data class Task(
     var strategy : String ="",
     var positionInStrategy : Int = 0,
     var timeLong: String,
-    var start : String,
-    var end : String,
+    var start :LocalDate,
+    var end :  LocalDate,
     var requite: String,
     var timeDone: String
 ){
 
 }
+

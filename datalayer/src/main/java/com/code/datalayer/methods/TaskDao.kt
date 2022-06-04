@@ -6,7 +6,7 @@ import com.code.datalayer.entities.Task
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-
+@TypeConverters(Converters::class)
 interface TaskDao {
 
     @Query("Select * from TASK_TABLE where TASK_TABLE.strategy = :strategy")
