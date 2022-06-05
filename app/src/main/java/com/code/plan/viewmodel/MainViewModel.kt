@@ -1,5 +1,7 @@
 package com.code.plan.viewmodel
 
+import android.os.Environment
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -39,6 +41,7 @@ class MainViewModel @Inject constructor(
         getAllStrategy.invoke().onEach { list->
             _strategies.value = strategies.value.copy(list)
         }.launchIn(viewModelScope)
+
     }
     fun getTaskByStrategy(strategy: String) = tasksByStrategy.invoke(strategy).onEach { list->
         _tasks.value = tasks.value.copy(list)
@@ -51,6 +54,6 @@ class MainViewModel @Inject constructor(
 
 }
 
-internal fun MainViewModel.bla(){
-
+internal fun MainViewModel.getDir():String{
+    return  ""
 }

@@ -10,9 +10,10 @@ import com.code.datalayer.methods.Converters
 
 import com.code.datalayer.methods.StrategyDao
 import com.code.datalayer.methods.TaskDao
+import com.code.datalayer.methods.TimeConverter
 
 @Database(entities = [Task::class,Strategy::class], version = 1)
-@TypeConverters(Converters::class)
+@TypeConverters(Converters::class,TimeConverter::class)
 abstract class Database:RoomDatabase() {
     abstract fun getTaskDao(): TaskDao
     abstract fun getStrategyDao():StrategyDao

@@ -6,6 +6,7 @@ import androidx.room.RoomDatabase
 import com.code.datalayer.Database
 import com.code.datalayer.constant.dbName
 import com.code.datalayer.methods.Converters
+import com.code.datalayer.methods.TimeConverter
 //import com.code.datalayer.methods.Converters
 import com.code.datalayer.methods.StrategyDao
 import com.code.datalayer.methods.TaskDao
@@ -26,6 +27,7 @@ object MainModule {
     fun getDb(@ApplicationContext context:Context): Database =
         Room.databaseBuilder(context,Database::class.java, dbName)
             .addTypeConverter(Converters())
+            .addTypeConverter(TimeConverter())
             .build()
 
     @Provides

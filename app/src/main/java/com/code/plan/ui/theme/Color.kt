@@ -1,5 +1,6 @@
 package com.code.plan.ui.theme
 
+import android.text.style.BackgroundColorSpan
 import androidx.compose.ui.graphics.Color
 
 val Purple200 = Color(0xFFBB86FC)
@@ -9,4 +10,4 @@ val Teal200 = Color(0xFF03DAC5)
 val HighlighterHyssop = Color(252,243,255)
 val taskTextColor = Color.Black
 val statusTimeColor = Color.Green
-val s = Color(0xfffefae0)
+val BackgroundColor = Color(0xfffefae0)
