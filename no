@@ -1,0 +1,24 @@
+[33mcommit 4dcb10908699eaf588323318569748dcca207026[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/feature_1[m[33m, [m[1;32mfeature_1[m[33m)[m
+Author: nguyen-ha-01 <aa12nguyenha@gmail.com>
+Date:   Sun Jun 5 16:50:19 2022 +0700
+
+    lastest change app 16:50
+
+[33mcommit 2090b13c4d6519e82d7abb17d4ea4f6019666906[m
+Author: nguyen-ha-01 <aa12nguyenha@gmail.com>
+Date:   Sun Jun 5 16:22:26 2022 +0700
+
+    update for ui
+
+[33mcommit b1a41ebb1547f90439a4e36aa3ef660651764f7f[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: nguyen-ha-01 <aa12nguyenha@gmail.com>
+Date:   Sun Jun 5 00:27:36 2022 +0700
+
+    fix db
+
+[33mcommit 71e753ed124283acbb521fd966d4cab835b8a9f7[m
+Author: nguyen-ha-01 <aa12nguyenha@gmail.com>
+Date:   Wed Jun 1 15:32:02 2022 +0700
+
+    git add -all
+    git commit -m
