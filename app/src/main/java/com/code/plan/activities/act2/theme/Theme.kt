@@ -1,4 +1,4 @@
-package com.code.plan.activities.ui.theme
+package com.code.plan.activities.act2.theme
 
 import android.app.Activity
 import android.os.Build

@@ -1,49 +1,59 @@
-package com.code.plan.activities
+package com.code.plan.activities.act1
 
+import android.Manifest
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.pm.PermissionInfo
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
-import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.code.datalayer.constant.strategyDf
-import com.code.datalayer.constant.taskDf
-import com.code.plan.R
-import com.code.plan.component.ItemTask
 import com.code.plan.navigation.NavHost
-import com.code.plan.ui.theme.BackgroundColor
-import com.code.plan.ui.theme.PlanTheme
+import com.code.plan.activities.act1.theme.BackgroundColor
+import com.code.plan.activities.act1.theme.PlanTheme
+import com.code.plan.activities.act2.Activity2
 import com.code.plan.viewmodel.MainViewModel
-import com.code.plan.viewmodel.getDir
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
+import java.security.Permission
 import javax.inject.Inject
-import kotlin.time.Duration
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @Inject
     lateinit var  mainviewmodel : MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        actionBar?.hide()
+        val listPermission = listOf(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.QUERY_ALL_PACKAGES)
         setContent {
             PlanTheme {
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = BackgroundColor) {
                     Column() {
+                        requestPermission(listPermission)
                         NavHost()
+
+//                        Intent(this@MainActivity,Activity2::class.java).let {
+//                            this@MainActivity.startActivity(it)
+//                        }
+
                     }
                 }
             }
         }
+    }
+
+    fun requestPermission(list: List<String>){
+        var notAgreeYet = mutableListOf<String>()
+        list.forEach {
+            if(this.checkSelfPermission(it)==PackageManager.PERMISSION_DENIED){
+                notAgreeYet.add(it)
+            }
+        }
+        if (notAgreeYet.isNotEmpty())
+        this.requestPermissions(notAgreeYet.toTypedArray(),10)
     }
 }

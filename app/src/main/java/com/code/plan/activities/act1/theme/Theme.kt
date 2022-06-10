@@ -1,4 +1,4 @@
-package com.code.plan.ui.theme
+package com.code.plan.activities.act1.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

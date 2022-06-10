@@ -2,10 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.code.plan">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY"/>
 
     <application
         android:name=".Application"
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,7 +19,12 @@
         android:theme="@style/Theme.Plan"
         tools:targetApi="31">
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.act2.Activity2"
+            android:exported="false"
+            android:label="@string/title_activity_2"
+            android:theme="@style/Theme.Plan" />
+        <activity
+            android:name=".activities.act1.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Plan">
@@ -26,6 +34,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name="com.code.domain.service.CountingService"/>
+<!--        <provider-->
+<!--            android:authorities="com.code.plan"-->
+<!--            android:name="com.code.domain.provider.MyProvider">-->
+
+<!--        </provider>-->
     </application>
 
 </manifest>
