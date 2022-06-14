@@ -12,10 +12,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import com.code.plan.navigation.NavHost
 import com.code.plan.activities.act1.theme.BackgroundColor
 import com.code.plan.activities.act1.theme.PlanTheme
 import com.code.plan.activities.act2.Activity2
+import com.code.plan.activities.act2.HandleBackPressed
 import com.code.plan.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.security.Permission
@@ -28,26 +30,17 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val listPermission = listOf(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.QUERY_ALL_PACKAGES)
+
         setContent {
             PlanTheme {
-                Surface(modifier = Modifier.fillMaxSize(),
-                    color = BackgroundColor) {
-                    Column() {
-                        requestPermission(listPermission)
-                        NavHost()
-
-//                        Intent(this@MainActivity,Activity2::class.java).let {
-//                            this@MainActivity.startActivity(it)
-//                        }
-
-                    }
-                }
+                val controller = rememberNavController()
+                requestPermission(listPermission)
+                NavHost(controller)
             }
         }
     }
-
     fun requestPermission(list: List<String>){
-        var notAgreeYet = mutableListOf<String>()
+        val notAgreeYet = mutableListOf<String>()
         list.forEach {
             if(this.checkSelfPermission(it)==PackageManager.PERMISSION_DENIED){
                 notAgreeYet.add(it)

@@ -36,10 +36,6 @@ fun SplashScreen(navController: NavHostController,modifier: Modifier = Modifier)
             horizontalAlignment = Alignment.CenterHorizontally) {
            SplashAnimate()
         }
-        LaunchedEffect(key1 = true){
-        delay(850)
-        navController.navigate(com.code.plan.navigation.HomeScreen.name)
-    }
     }
 }
 @Preview(showBackground = true, showSystemUi = true)
@@ -61,9 +57,9 @@ fun SplashAnimate(modifier: Modifier = Modifier,brush: Brush = SplashBrush,_size
 
         val w = _size.width.value
         val stroke_ = animateFloatAsState(targetValue =   if (run)w*0.12f else w*0.5f, tween(600))
-        val alpha_ =  animateFloatAsState(targetValue =   if (run_)1f else 0f, tween(300))
+        val alpha_ =  animateFloatAsState(targetValue =   if (run_)1f else 0f, tween(500))
         val bgColor = MaterialTheme.colors.background
-    Canvas(modifier = modifier.graphicsLayer {
+        Canvas(modifier = modifier.graphicsLayer {
             this.alpha = alpha_.value
         }
             .size(_size)
@@ -82,7 +78,5 @@ fun SplashAnimate(modifier: Modifier = Modifier,brush: Brush = SplashBrush,_size
             drawLine(brush,startLine,endLine, strokeWidth = p1_.x, cap = StrokeCap.Round)
             drawLine(brush,startLine,endLine_, strokeWidth = p1_.x, cap = StrokeCap.Round)
         }
-
-
 
 }

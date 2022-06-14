@@ -1,5 +1,6 @@
 package com.code.plan.screens
 
+import android.app.Activity
 import android.content.Intent
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
@@ -20,37 +21,27 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.navigation.NavHostController
 import com.code.plan.activities.act2.Activity2
+import com.code.plan.activities.act2.HandleBackPressed
 import com.code.plan.component.ScaffoldScreen
 import com.code.plan.navigation.activity2
 
 @Composable
 fun HomeScreen(navController: NavHostController,modifier: Modifier = Modifier ){
-
+    val ctx = LocalContext.current
+    val activity = ctx as? Activity
     navController.enableOnBackPressed(true)
+    HandleBackPressed {
+        activity?.finish()
+    }
 
     Surface(modifier = modifier.fillMaxWidth()) {
         Column(Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = {
-                navController.navigate(activity2.name)
-            }) {
-                Text("move to act2")
+            Button(onClick = {navController.navigate(com.code.plan.navigation.SchedulerScreen.name) }) {
+                Text(text = "schedule")
             }
-        }
 
+        }
     }
 }
-//
-//@Composable
-//fun HandleBackPress(){
-//    val backPressCallBack by remember{
-//        BackHandler() {
-//
-//        }
-//    }
-//    val backPressDispatcher = checkNotNull(LocalOnBackPressedDispatcherOwner.current)
-//    {"there's no back Press provided"}.onBackPressedDispatcher
-//    val lifecycle = LocalLifecycleOwner.current.lifecycle
-//    backPressDispatcher.onBackPressed()
-//}
